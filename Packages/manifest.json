@@ -1,9 +1,8 @@
 {
   "dependencies": {
-    "com.alexejhero.unitycsharp11": "https://github.com/Alexejhero/Unity-CSharp11.git?path=Assets/UnityCSharp11",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
-    "com.unity.ide.rider": "3.0.31",
+    "com.unity.ide.rider": "3.0.34",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.inputsystem": "1.11.2",
