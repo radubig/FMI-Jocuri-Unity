@@ -1,3 +1,4 @@
+using Bullets.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,24 @@ public class PlayerController : MonoBehaviour
 	{
 		moveInput = context.ReadValue<Vector2>();
 	}
-
+	
+	// Called when the Shoot input action is performed
+	public void OnShoot(InputAction.CallbackContext context)
+	{
+		if (context.action.triggered)
+		{
+			// Shoot bullet
+			GameObject bullet = BulletPool.Instance.GetPooledObject();
+			if (bullet)
+			{
+				bullet.transform.position = transform.position;
+				bullet.transform.rotation = transform.rotation;
+				bullet.transform.Translate(Vector3.right);
+				bullet.SetActive(true);
+			}
+		}
+	}
+	
 	private void FixedUpdate()
 	{
 		// Handle movement
