@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CharacterScripts;
+using UnityEngine;
 
 namespace Bullets.Scripts
 {
@@ -8,10 +9,12 @@ namespace Bullets.Scripts
         [SerializeField] private float bulletLifetime = 1f;
         private Rigidbody2D _rb;
         private float _timer;
-
+        private DamageDealer _damageDealer;
+        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _damageDealer = GetComponent<DamageDealer>();
         }
 
         private void OnEnable()
@@ -34,9 +37,16 @@ namespace Bullets.Scripts
             if (!collision.gameObject.CompareTag("bullet"))
             {
                 Debug.Log("Bullet collided with " + collision.gameObject.name);
+                
+                Health health = collision.gameObject.GetComponent<Health>();
+                if (health != null) // Only proceed if there is a Health component
+                {
+                    _damageDealer.DealDamage(health); // Apply damage to the health component
+                }
+                
                 DisableBullet();
             }
-            // TODO: Interact with health component
+            
         }
 
         private void DisableBullet()
