@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Bullets.Scripts
 {
@@ -7,8 +8,10 @@ namespace Bullets.Scripts
     {
         public static BulletPool Instance;
 
-        private List<GameObject> _bulletPool = new();
-        private int _poolSize = 10;
+        private readonly List<GameObject> _bulletPool = new();
+
+        [SerializeField, FormerlySerializedAs("_poolSize")]
+        private int poolSize = 10;
         
         [SerializeField] private GameObject bulletPrefab;
         
@@ -20,7 +23,7 @@ namespace Bullets.Scripts
 
         private void Start()
         {
-            for (int i = 0; i < _poolSize; i++)
+            for (int i = 0; i < poolSize; i++)
             {
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.SetActive(false);
@@ -30,14 +33,18 @@ namespace Bullets.Scripts
 
         public GameObject GetPooledObject()
         {
-            foreach (var bullet in _bulletPool)
+            foreach (GameObject bullet in _bulletPool)
             {
                 if (!bullet.activeInHierarchy)
                 {
                     return bullet;
                 }
             }
-            return null;
+
+            GameObject newBullet = Instantiate(bulletPrefab);
+            newBullet.SetActive(false);
+            _bulletPool.Add(newBullet);
+            return newBullet;
         }
     }
 }

@@ -29,13 +29,10 @@ public class PlayerController : MonoBehaviour
 		{
 			// Shoot bullet
 			GameObject bullet = BulletPool.Instance.GetPooledObject();
-			if (bullet)
-			{
-				bullet.transform.position = transform.position;
-				bullet.transform.rotation = transform.rotation;
-				bullet.transform.Translate(Vector3.right);
-				bullet.SetActive(true);
-			}
+			bullet.transform.position = transform.position;
+			bullet.transform.rotation = transform.rotation;
+			bullet.transform.Translate(Vector3.right);
+			bullet.SetActive(true);
 		}
 	}
 	
