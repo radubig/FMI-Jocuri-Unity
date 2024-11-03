@@ -2,70 +2,60 @@ using Bullets.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-	public float moveSpeed = 5f;
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class PlayerController : MonoBehaviour
+    {
+        public float moveSpeed = 5f;
 
-	private Vector2 moveInput;
-	private Rigidbody2D rb;
-	private Camera mainCamera;
+        private Rigidbody2D _rb;
+        private Camera _mainCamera;
 
-	private void Awake()
-	{
-		rb = GetComponent<Rigidbody2D>();
-		mainCamera = Camera.main; // Get reference to the main camera
-	}
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _mainCamera = Camera.main;
+        }
 
-	// Called when the Move input action is performed
-	public void OnMove(InputAction.CallbackContext context)
-	{
-		moveInput = context.ReadValue<Vector2>();
-	}
-	
-	// Called when the Shoot input action is performed
-	public void OnShoot(InputAction.CallbackContext context)
-	{
-		if (context.action.triggered)
-		{
-			// Shoot bullet
-			GameObject bullet = BulletPool.Instance.GetPooledObject();
-			bullet.transform.position = transform.position;
-			bullet.transform.rotation = transform.rotation;
-			bullet.transform.Translate(Vector3.right);
-			bullet.SetActive(true);
-		}
-	}
-	
-	private void FixedUpdate()
-	{
-		// Handle movement
-		Vector2 move = new Vector2(moveInput.x, moveInput.y) * moveSpeed;
-		rb.velocity = move;
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            Vector2 moveInput = context.ReadValue<Vector2>();
+            _rb.velocity = moveInput * moveSpeed;
+        }
 
-		// Rotate player to face the mouse
-		RotatePlayerToMouse();
-	}
+        public void OnShoot(InputAction.CallbackContext context)
+        {
+            if (!context.action.triggered) return;
 
-	private void LateUpdate()
-	{
-		// Ensure the camera always stays at the default rotation
-		mainCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
-	}
+            GameObject bullet = BulletPool.Instance.GetPooledObject();
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+            bullet.transform.Translate(Vector3.right);
+            bullet.SetActive(true);
+        }
 
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            if (context.control.device is Mouse)
+            {
+                Vector2 mousePos = context.ReadValue<Vector2>();
+                Vector3 worldMousePos = _mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _mainCamera.nearClipPlane));
+                Vector2 direction = (worldMousePos - transform.position).normalized;
 
-	private void RotatePlayerToMouse()
-	{
-		// Get the mouse position in world space
-		Vector3 mousePos = Mouse.current.position.ReadValue();
-		Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, mainCamera.nearClipPlane));
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            else if (context.control.device is Gamepad)
+            {
+                Vector2 lookInput = context.ReadValue<Vector2>();
+                if (lookInput == Vector2.zero) return;
 
-		// Calculate direction from player to mouse
-		Vector2 direction = (worldMousePos - transform.position).normalized;
+                Vector2 direction = lookInput.normalized;
 
-		// Calculate the angle in degrees
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-		// Apply rotation to the player (adjust based on your character's sprite orientation)
-		transform.rotation = Quaternion.Euler(0, 0, angle);
-	}
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+        }
+    }
 }
