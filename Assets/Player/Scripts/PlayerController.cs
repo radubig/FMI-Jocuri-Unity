@@ -11,6 +11,7 @@ namespace Player
 
         private Rigidbody2D _rb;
         private Camera _mainCamera;
+        private Vector2 _velocity;
 
         private void Awake()
         {
@@ -18,10 +19,15 @@ namespace Player
             _mainCamera = Camera.main;
         }
 
+        private void FixedUpdate()
+        {
+            _rb.velocity = _velocity;
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
             Vector2 moveInput = context.ReadValue<Vector2>();
-            _rb.velocity = moveInput * moveSpeed;
+            _velocity = moveInput * moveSpeed;
         }
 
         public void OnShoot(InputAction.CallbackContext context)
