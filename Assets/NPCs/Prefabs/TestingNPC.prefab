@@ -97,9 +97,11 @@ GameObject:
   - component: {fileID: 766765377393263311}
   - component: {fileID: 1237806464189958126}
   - component: {fileID: 6987669834060831321}
+  - component: {fileID: -2793275600535304140}
+  - component: {fileID: 4419662507162119205}
   m_Layer: 0
   m_Name: TestingNPC
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 3376489919709211389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.644, y: 1.749, z: 0}
+  m_LocalPosition: {x: 1.644, y: 1.749, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -146,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isDead: 0
 --- !u!50 &1237806464189958126
 Rigidbody2D:
   serializedVersion: 4
@@ -221,3 +224,31 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.29}
       - {x: 0, y: 0.58}
   m_UseDelaunayMesh: 0
+--- !u!114 &-2793275600535304140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376489919709211389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b01d9b05012864c900b7816f8dcb16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 3
+  _pathfinding: {fileID: 0}
+--- !u!114 &4419662507162119205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376489919709211389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c124e6bae09318e4a9f009c43542799f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridManager: {fileID: 0}

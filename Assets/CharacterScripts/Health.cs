@@ -7,7 +7,9 @@ namespace CharacterScripts
     {
         [SerializeField] private float maxHealth = 100f;
         private float _currentHealth;
-
+        public bool isDead = false;
+        public event Action onDeath;
+        
         public event Action<float> OnHealthChanged;
 
         private void Awake()
@@ -33,7 +35,9 @@ namespace CharacterScripts
         private void HandleDepletedHealth()
         {
             Debug.Log($"{gameObject.name} has died.");
-            // To be implemented once we decide what to do when hp reaches 0
+            isDead = true;
+            onDeath?.Invoke();
+            Destroy(gameObject);
         }
     }
 }
