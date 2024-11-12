@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2379160060152650584}
   - component: {fileID: 8784558748365282375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestingNPCSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1873989343
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6987669834060831321}
   - component: {fileID: -2793275600535304140}
   - component: {fileID: 4419662507162119205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestingNPC
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 3376489919709211389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.644, y: 1.749, z: -1}
+  m_LocalPosition: {x: 1.644, y: 1.749, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -47,7 +47,7 @@ namespace NPCs.Scripts
 
                 foreach (Node neighbour in gridManager.GetNeighbours(currentNode))
                 {
-                    if (!neighbour.walkable || closedSet.Contains(neighbour)) continue;
+                    if ((!neighbour.walkable && neighbour != targetNode) || closedSet.Contains(neighbour)) continue;
 
                     int newCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
                     if (newCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))

@@ -17,20 +17,50 @@ namespace Map.Scripts
             InitializeGrid();
         }
 
+        private Sprite CreateGridSprite(float size)
+        {
+            Texture2D texture = new Texture2D(1, 1);
+            texture.SetPixel(0, 0, Color.white);
+            texture.Apply();
+
+            Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, size, size), new Vector2(0.5f, 0.5f), 1.0f);
+            sprite.name = "SquareSprite";
+
+            GameObject squareObject = new GameObject();
+
+            return sprite;
+        }
+        
+        
+        
         private void InitializeGrid()
         {
-            grid = new Node[gridSize.x * 2, gridSize.y * 2];
+            grid = new Node[gridSize.x, gridSize.y];
             Vector3 worldBottomLeft = transform.position - Vector3.right * gridSize.x / 2 - Vector3.up * gridSize.y / 2;
 
-            for (int x = 0; x < gridSize.x * 2; x++)
+            for (int x = 0; x < gridSize.x; x++)
             {
-                for (int y = 0; y < gridSize.y * 2; y++)
+                for (int y = 0; y < gridSize.y; y++)
                 {
                     Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * cellSize) + Vector3.up * (y * cellSize);
+                    
+                    //DisplayGrid(worldPoint,x , y);
+
                     bool walkable = !Physics2D.OverlapCircle(worldPoint, cellSize / 2, obstacleLayers);
                     grid[x, y] = new Node(walkable, worldPoint, x, y);
                 }
             }
+        }
+
+        private void DisplayGrid(Vector3 worldPoint, int x, int y)
+        {
+            GameObject gridSquare = new GameObject("gridSquare"+x+y);
+            SpriteRenderer renderer = gridSquare.AddComponent<SpriteRenderer>();
+
+            renderer.sprite = CreateGridSprite(0.3f); 
+            renderer.color = Color.blue;
+                    
+            gridSquare.transform.position = worldPoint;
         }
 
         public Node GetNodeFromWorldPosition(Vector2 worldPosition)
