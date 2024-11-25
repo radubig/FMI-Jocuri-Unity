@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3090611676893963930}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: CharacterModel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 6103566104983617994}
   - component: {fileID: 1715999519620018230}
   - component: {fileID: 6681125718461451709}
+  - component: {fileID: -6015233257588114769}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -356,3 +357,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-6015233257588114769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384386410979721860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982ca7c0313ffdf46b3673edd87071be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBarPrefab: {fileID: 6834472781965944694, guid: 1b2b4706cf8d47749bc45126e1acb3e3, type: 3}
+  isDead: 0

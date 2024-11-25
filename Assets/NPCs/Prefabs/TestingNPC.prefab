@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8784558748365282375}
   m_Layer: 7
   m_Name: TestingNPCSprite
-  m_TagString: Untagged
+  m_TagString: CharacterModel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1873989343
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.2526497, g: 0.23139909, b: 0.754717, a: 1}
   m_FlipX: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthBarPrefab: {fileID: 6834472781965944694, guid: 1b2b4706cf8d47749bc45126e1acb3e3, type: 3}
   isDead: 0
 --- !u!50 &1237806464189958126
 Rigidbody2D:
