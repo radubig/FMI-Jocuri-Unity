@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  activeWeapon: {fileID: 691464976212170751, guid: 70c155670029dc841af6cf24b62d71ac, type: 3}
 --- !u!50 &6103566104983617994
 Rigidbody2D:
   serializedVersion: 4
