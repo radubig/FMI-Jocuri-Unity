@@ -72,6 +72,13 @@ namespace NPCs.Scripts
 
                 if (!collidingWithAnotherEnemy)
                 {
+                    Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+
+                    if (direction != Vector2.zero)
+                    {
+                        float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                        transform.rotation = Quaternion.Euler(0, 0, rotationAngle-90);
+                    }
                     transform.position = futurePosition;
                 }
             }
