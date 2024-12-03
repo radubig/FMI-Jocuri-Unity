@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3376489919709211389, guid: 50dd8c1adaa50c34eb68ba10eaf78bf4, type: 3}
   player: {fileID: 1298626530}
-  spawnInterval: 2
+  spawnInterval: 5
   maxEnemies: 2
 --- !u!4 &118508447
 Transform:
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1715999519620018230, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8384386410979721860, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
       propertyPath: m_Name
@@ -11631,6 +11631,10 @@ PrefabInstance:
     - target: {fileID: 7395449421594474071, guid: 2bb5b0eb42497d448a75878be4b64ba0, type: 3}
       propertyPath: m_Tiles.Array.data[423].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582539963721190514, guid: 2bb5b0eb42497d448a75878be4b64ba0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9045176813466014872, guid: 2bb5b0eb42497d448a75878be4b64ba0, type: 3}
       propertyPath: m_Name
