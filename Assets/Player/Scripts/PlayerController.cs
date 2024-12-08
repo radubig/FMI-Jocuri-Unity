@@ -1,6 +1,9 @@
+using System;
 using Bullets.Scripts;
+using CharacterScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Weapons.Scripts;
 
 namespace Player
 {
@@ -8,20 +11,28 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         public float moveSpeed = 5f;
-
+        public GameObject activeWeapon;
+        
         private Rigidbody2D _rb;
         private Camera _mainCamera;
         private Vector2 _velocity;
+        private bool _isTryingToShoot;
+        private float _nextActionTime = 0f;
+        private WeaponScript activeWeaponScript;
+        private InputAction shootingAction;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _mainCamera = Camera.main;
+            _isTryingToShoot = false;
+            activeWeaponScript = activeWeapon.GetComponent<WeaponScript>();
         }
 
         private void FixedUpdate()
         {
             _rb.velocity = _velocity;
+            WeaponBehaviour();
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -34,11 +45,19 @@ namespace Player
         {
             if (!context.action.triggered) return;
 
-            GameObject bullet = BulletPool.Instance.GetPooledObject();
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
-            bullet.transform.Translate(Vector3.right);
-            bullet.SetActive(true);
+            _isTryingToShoot = true;
+            shootingAction = context.action;
+            /*shootingAction.started += context =>
+            {
+                _isTryingToShoot = true;
+            };*/
+            shootingAction.canceled += context =>
+            {
+                Debug.Log("OnShoot pa si la revedere:" + _isTryingToShoot);
+                _isTryingToShoot = false;
+            };
+            //if (context.action.WasReleasedThisFrame()) _isTryingToShoot = false;
+            
         }
 
         public void OnLook(InputAction.CallbackContext context)
@@ -61,6 +80,20 @@ namespace Player
 
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+        }
+
+        public void WeaponBehaviour()
+        {
+            if (_isTryingToShoot && Time.time >= _nextActionTime)
+            {
+                _nextActionTime = Time.time + activeWeaponScript.fireRateInSeconds;
+                GameObject bullet = BulletPool.Instance.GetPooledObject();
+                bullet.GetComponent<DamageDealer>().damageAmount = activeWeaponScript.damage;
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = transform.rotation;
+                bullet.transform.Translate(Vector3.right);
+                bullet.SetActive(true);
             }
         }
     }
