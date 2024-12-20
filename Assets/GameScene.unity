@@ -222,6 +222,50 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 5fd9a8bc-12fc-4681-8b65-09268cb0c3fe
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Player/SwitchWeapon[/Keyboard/q]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1788546531}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSwitchWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Player.PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681125718461451709, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460165416385700285, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+      propertyPath: secondaryWeapon
+      value: 
+      objectReference: {fileID: 5283005678850723706, guid: 5d6bf0b346b3f3f429c71f853826ed70, type: 3}
     - target: {fileID: 8384386410979721860, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11759,6 +11803,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5805218022926023600, guid: 2bb5b0eb42497d448a75878be4b64ba0, type: 3}
   m_PrefabInstance: {fileID: 1290434506}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1788546531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7460165416385700285, guid: cd0ed6b5e3049eb4594f595b2d5c63e3, type: 3}
+  m_PrefabInstance: {fileID: 127488786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77218218c4115d946a1fda85721e444a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

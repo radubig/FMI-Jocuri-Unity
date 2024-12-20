@@ -12,6 +12,7 @@ namespace Player
     {
         public float moveSpeed = 5f;
         public GameObject activeWeapon;
+        public GameObject secondaryWeapon;
         
         private Rigidbody2D _rb;
         private Camera _mainCamera;
@@ -41,6 +42,12 @@ namespace Player
             _velocity = moveInput * moveSpeed;
         }
 
+        public void OnSwitchWeapon()
+        {
+            (activeWeapon, secondaryWeapon) = (secondaryWeapon, activeWeapon);
+            activeWeaponScript = activeWeapon.GetComponent<WeaponScript>();
+        }
+        
         public void OnShoot(InputAction.CallbackContext context)
         {
             if (!context.action.triggered) return;
