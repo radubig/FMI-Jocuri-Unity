@@ -74,6 +74,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# TextMesh Pro Assets
+/[Aa]ssets/TextMesh Pro/
+/[Aa]ssets/TextMesh Pro.meta
+
 # User-ignored files
 .idea
 
