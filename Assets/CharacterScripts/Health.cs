@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UI;
 
 namespace CharacterScripts
 {
@@ -12,11 +13,17 @@ namespace CharacterScripts
         public event Action<float> OnHealthChanged;
         private float _currentHealth;
         private GameObject healthBarObject;
+        private Score scoreDisplay;
 
         private void Awake()
         {
             _currentHealth = maxHealth;
             healthBarObject = Instantiate(healthBarPrefab, GetHealthBarPosition(), Quaternion.identity);
+        }
+        
+        private void Start()
+        {
+            scoreDisplay = GameObject.Find("Score").GetComponent<Score>();
         }
 
         private void LateUpdate()
@@ -59,6 +66,10 @@ namespace CharacterScripts
             Debug.Log($"{gameObject.name} has died.");
             isDead = true;
             onDeath?.Invoke();
+            if (this.CompareTag("Enemy"))
+            {
+                scoreDisplay.score += 100;
+            }
             Destroy(healthBarObject);
             Destroy(gameObject);
         }

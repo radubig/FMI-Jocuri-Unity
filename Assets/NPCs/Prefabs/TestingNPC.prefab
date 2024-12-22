@@ -235,6 +235,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBarPrefab: {fileID: 6834472781965944694, guid: 1b2b4706cf8d47749bc45126e1acb3e3, type: 3}
   isDead: 0
+  scoreDisplay: {fileID: 2313198120462907736, guid: 8ce89f334012c97409c73e0cefe61d0d, type: 3}
 --- !u!50 &1237806464189958126
 Rigidbody2D:
   serializedVersion: 4
