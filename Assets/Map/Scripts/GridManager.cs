@@ -44,7 +44,7 @@ namespace Map.Scripts
                 {
                     Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * cellSize) + Vector3.up * (y * cellSize);
                     
-                    //DisplayGrid(worldPoint,x , y);
+                    DisplayGrid(worldPoint,x , y);
 
                     bool walkable = !Physics2D.OverlapCircle(worldPoint, cellSize / 2, obstacleLayers);
                     grid[x, y] = new Node(walkable, worldPoint, x, y);
@@ -57,7 +57,7 @@ namespace Map.Scripts
             GameObject gridSquare = new GameObject("gridSquare"+x+y);
             SpriteRenderer renderer = gridSquare.AddComponent<SpriteRenderer>();
 
-            renderer.sprite = CreateGridSprite(0.3f); 
+            renderer.sprite = CreateGridSprite(0.09f); 
             renderer.color = Color.blue;
                     
             gridSquare.transform.position = worldPoint;
